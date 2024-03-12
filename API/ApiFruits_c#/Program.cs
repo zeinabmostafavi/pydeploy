@@ -17,28 +17,23 @@ namespace ConsoleApp6
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("welcome  :) ");
+            Console.WriteLine("welcome :) ");
             Console.WriteLine("**************************** ");
-            Console.WriteLine("please enter the name fruite:");
-            string name_fruite = Console.ReadLine();
+            Console.WriteLine("please enter the name fruit:");
 
+            string fruit = Console.ReadLine();
             var client = new RestClient();
-            var url = $"https://fruityvice.com/api/fruit/{name_fruite}";
+            var url = $"https://fruityvice.com/api/fruit/{fruit}";
             var request = new RestRequest(url, Method.Get);
             RestResponse response = client.Get(request);
-            Console.WriteLine(response.content);
-            JObject data = JObject.Parse(response);
-            string namr = (string)data["name"];
-            string suger = (string)data["nutritions"]["suger"];
-            string calories = (string)data["nutritions"]["calories"];
-            string carbohydrates = (string)data["nutritions"]["carbohydrates"];
-            string protein = (string)data["nutritions"]["protein"];
-            Console.WriteLine($"name:\t{name_fruite} suger:{suger} carbohydrates:{carbohydrates} calories:/t{calories}");
+            JObject s = JObject.Parse(response.Content);
+            string yourPrompt = (string)s["name"];
+
 
             Console.ReadKey();
 
-
-
+            
+           
             /*RestResponse response = await client.ExecuteAsync(request);*/
 
         }
