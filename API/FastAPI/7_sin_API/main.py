@@ -7,13 +7,13 @@ import numpy
 
 # uvicorn main:app --reload
 # seven_sin={
-#  'سیب':{"descrip":" سیب نماد سلامتی، زندگی و زیبایی است","img":"assets\sib.jpeg"},
-# "سماق" :{"descrip":" سماق نماد زیبایی و شادابی است"     ,"img":"assets\somagh.jpeg"},
-#  "سیر" :{"descrip":" سیر نماد سلامتی و درمان بیماری‌هاست","img":"assets\sir.jpeg"},
-#  "سکه" :{"descrip":" سکه نشان‌دهنده فراوانی، برکت، توفیق و ثروت است","img":"assets\seke.jpeg"},
-# "سمنو" :{"descrip":" سمنو نماد عشق و محبت در سفره هفت سین است","img":"assets\samanoo.jpeg"},
-# "سبزه" :{"descrip":" سبزه یکی از مهم‌ترین نمادهای سفره هفت سین است که بهار و زندگی را نشان می‌دهد","img":"assets\sabze.jpeg"},
-# "سرکه" :{"descrip":" سرکه نماد زندگی و بردباری در برابر مشکلات محسوب می‌شود","img":"assets\serke.jpeg"}
+#  'سیب':{"descrip":" سیب نماد سلامتی، زندگی و زیبایی است","img":"images\sib.jpeg"},
+# "سماق" :{"descrip":" سماق نماد زیبایی و شادابی است"     ,"img":"images\somagh.jpeg"},
+#  "سیر" :{"descrip":" سیر نماد سلامتی و درمان بیماری‌هاست","img":"images\sir.jpeg"},
+#  "سکه" :{"descrip":" سکه نشان‌دهنده فراوانی، برکت، توفیق و ثروت است","img":"images\seke.jpeg"},
+# "سمنو" :{"descrip":" سمنو نماد عشق و محبت در سفره هفت سین است","img":"images\samanoo.jpeg"},
+# "سبزه" :{"descrip":" سبزه یکی از مهم‌ترین نمادهای سفره هفت سین است که بهار و زندگی را نشان می‌دهد","img":"images\sabze.jpeg"},
+# "سرکه" :{"descrip":" سرکه نماد زندگی و بردباری در برابر مشکلات محسوب می‌شود","img":"images\serke.jpeg"}
 #  }
 
 app=FastAPI()
@@ -49,31 +49,31 @@ def information(sin_name:str):
 @app.get("/sins/{sin_name}/image")
 def image(sin_name:str):
      if sin_name == "sib"  :
-            image = cv2.imread("assets\sib.jpeg")      
+            image = cv2.imread("images\sib.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")
      if sin_name == "somagh" :
-            image = cv2.imread("assets\somagh.jpeg")      
+            image = cv2.imread("images\somagh.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
      if sin_name == "sir" :
-            image = cv2.imread("assets\sir.jpeg")      
+            image = cv2.imread("images\sir.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
      if sin_name == "seke" :
-            image = cv2.imread("assets\seke.jpeg")      
+            image = cv2.imread("images\seke.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
      if sin_name == "samanoo" :
-            image = cv2.imread("assets\samanoo.jpeg")      
+            image = cv2.imread("images\samanoo.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
      if sin_name == "sabzeh" :
-            image = cv2.imread("assets\sabze.jpeg")      
+            image = cv2.imread("images\sabze.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
      if sin_name == "serke" :
-            image = cv2.imread("assets\serke.jpeg")      
+            image = cv2.imread("images\serke.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
      else:
