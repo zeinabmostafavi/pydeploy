@@ -49,31 +49,31 @@ def information(sin_name:str):
 @app.get("/sins/{sin_name}/image")
 def image(sin_name:str):
      if sin_name == "sib"  :
-            image = cv2.imread("images\sib.jpeg")      
+            image = cv2.imread(r".\images\sib.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")
      if sin_name == "somagh" :
-            image = cv2.imread("images\somagh.jpeg")      
+            image = cv2.imread(r".\images\somagh.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
      if sin_name == "sir" :
-            image = cv2.imread("images\sir.jpeg")      
+            image = cv2.imread(r".\images\sir.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
      if sin_name == "seke" :
-            image = cv2.imread("images\seke.jpeg")      
+            image = cv2.imread(r".\images\seke.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
      if sin_name == "samanoo" :
-            image = cv2.imread("images\samanoo.jpeg")      
+            image = cv2.imread(r".\images\samanoo.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
      if sin_name == "sabzeh" :
-            image = cv2.imread("images\sabze.jpeg")      
+            image = cv2.imread(r".\images\sabze.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
      if sin_name == "serke" :
-            image = cv2.imread("images\serke.jpeg")      
+            image = cv2.imread(r".\images\serke.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
      else:
