@@ -19,7 +19,7 @@ import numpy
 app=FastAPI()
 
 @app.get("/")
-def test():
+def read_root():
     return "Hi! Welcome to my API. The API provides information for Haft Sin (Haft Seen) is a traditional custom in the New Year holiday of Iranian known as Nowruz. Actually it is a table setting with 7 different items which its essential items letters start with."
 
 @app.get("/sins")
@@ -28,19 +28,19 @@ def name():
    
 @app.get("/sins/{sin_name}")
 def information(sin_name:str):
-     if sin_name == "سیب" :
+     if sin_name == "sib" :
             return " سیب نماد سلامتی، زندگی و زیبایی است"
-     if sin_name == "سماق" :
+     if sin_name == "somagh" :
             return " سماق نماد زیبایی و شادابی است"
-     if sin_name == "سیر" :
+     if sin_name == "sir" :
             return "سیر نماد سلامتی و درمان بیماری‌هاست"
-     if sin_name == "سکه" :
+     if sin_name == "seke" :
             return " سکه نشان‌دهنده فراوانی، برکت، توفیق و ثروت است"
-     if sin_name == "سمنو" :
+     if sin_name == "samanoo" :
             return "سمنو نماد عشق و محبت در سفره هفت سین است"
-     if sin_name == "سبزه" :
+     if sin_name == "sabzeh" :
             return " سبزه یکی از مهم‌ترین نمادهای سفره هفت سین است که بهار و زندگی را نشان می‌دهد"
-     if sin_name == "سرکه" :
+     if sin_name == "serke" :
             return "سرکه نماد زندگی و بردباری در برابر مشکلات محسوب می‌شود"
      else:
        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,detail="NOT FOUND ITEM")
@@ -48,25 +48,34 @@ def information(sin_name:str):
 
 @app.get("/sins/{sin_name}/image")
 def image(sin_name:str):
-     if sin_name == "سیب" :
+     if sin_name == "sib"  :
             image = cv2.imread("assets\sib.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")
-     if sin_name == "سماق" :
+     if sin_name == "somagh" :
             image = cv2.imread("assets\somagh.jpeg")      
             _, encode_image = cv2.imencode(".png",image)
             return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
-     #_________use_FileResponse
-     if sin_name == "سیر" :
-            return FileResponse("assets\sir.jpeg")
-     if sin_name == "سکه" :
-            return FileResponse("assets\seke.jpeg")
-     if sin_name == "سمنو" :
-            return FileResponse("assets\samanoo.jpeg")
-     if sin_name == "سبزه" :
-            return FileResponse("assets\sabze.jpeg")
-     if sin_name == "سرکه" :
-            return FileResponse("assets\serke.jpeg")
+     if sin_name == "sir" :
+            image = cv2.imread("assets\sir.jpeg")      
+            _, encode_image = cv2.imencode(".png",image)
+            return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
+     if sin_name == "seke" :
+            image = cv2.imread("assets\seke.jpeg")      
+            _, encode_image = cv2.imencode(".png",image)
+            return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
+     if sin_name == "samanoo" :
+            image = cv2.imread("assets\samanoo.jpeg")      
+            _, encode_image = cv2.imencode(".png",image)
+            return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
+     if sin_name == "sabzeh" :
+            image = cv2.imread("assets\sabze.jpeg")      
+            _, encode_image = cv2.imencode(".png",image)
+            return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
+     if sin_name == "serke" :
+            image = cv2.imread("assets\serke.jpeg")      
+            _, encode_image = cv2.imencode(".png",image)
+            return StreamingResponse(content=io.BytesIO(encode_image.tobytes()), media_type = "image/png")     
      else:
        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,detail="NOT FOUND ITEM")
 
