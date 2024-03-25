@@ -19,7 +19,7 @@ import numpy
 app=FastAPI()
 
 @app.get("/")
-def test():
+def read_root():
     return "Hi! Welcome to my API. The API provides information for Haft Sin (Haft Seen) is a traditional custom in the New Year holiday of Iranian known as Nowruz. Actually it is a table setting with 7 different items which its essential items letters start with."
 
 @app.get("/sins")
