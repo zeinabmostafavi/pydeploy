@@ -36,3 +36,26 @@ class Database:
             print("error:", e)
             return []
 
+    @staticmethod
+    def delete(id):
+        try:
+            my_con = connect('todo.db')
+            my_cursor = my_con.cursor()
+            my_cursor.execute(f"DELETE FROM tasks WHERE id ='{id}'")
+            my_con.commit()
+            my_con.close()
+            return True
+        except Exception as e:
+            print("error=:", e)
+            return False
+
+    @staticmethod
+    def edit(id,title,desceription,time,status):
+        my_con = connect('todo.db')
+        my_cursor = my_con.cursor()
+        my_cursor.execute(
+            f"UPDATE tasks SET id='{id}',title='{title}',desceription='{desceription}',time='{time}',status='{status}'")
+       
+        my_con.commit()
+        my_con.close()
+        return True
