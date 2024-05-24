@@ -21,36 +21,27 @@ def read_tasks():
 #id,title,desceription,time,status
 def add_task(id:int = Form() , title:str=Form(),desceription:str=Form(),time:int=Form(), status:bool=Form()):
     response = tasks.insert(id,title,desceription,time,status)
-    
     return response
 
 
 @app.delete("/items/{id}")
 def remove_task(id:str):
     response = tasks.delete(id)
-    
-    
-    return response,{"message": "Item deleted"}
-    
+    if response == True:
+        return response,{"message": "Item deleted"}
+    if response == False:
+        raise HTTPException(status_code=400 , detail="this id does not exists ")
 
-
+        
 
 
 @app.put("/items/{id}")
-def update_friend(id:int , title:str=Form(),desceription:str=Form(),time:int=Form(), status:bool=Form()):
-    # if id not in friends:
-    #     raise HTTPException(status_code=404 , dtail="item not found")
-    if title is not None:
-        tasks.edit(title={title})
-        print('edit')
-    if desceription is not None:
-        tasks.edit(desceription={desceription})
-    if time is not None:
-        tasks.edit(time={time})
-    if status is not None:
-        tasks.edit(status={status})
+def update_friend(id:int):
+    response = tasks.edit(id)
+    if response == True:
+        return response,{"message": "Item updated"}
+    if response == False:
+        raise HTTPException(status_code=400 , detail="this id does not exists ")
 
-    response = tasks.edit(id,title,desceription,time,status)
     
     
-    return response,{"message": "Item uptaded"}
